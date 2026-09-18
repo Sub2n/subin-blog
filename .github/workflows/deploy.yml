@@ -1,8 +1,9 @@
 name: Deploy to sub2n.github.io
 
 # main에 push하면 빌드해서 Sub2n/Sub2n.github.io 저장소의 master 브랜치로 밀어 넣는다.
-# 준비물: 이 저장소 Settings → Secrets → DEPLOY_TOKEN
-#   (Sub2n.github.io 저장소에 contents:write 권한이 있는 fine-grained PAT)
+# 준비물: 이 저장소 Settings → Secrets and variables → Actions → DEPLOY_TOKEN
+#   (Sub2n.github.io 저장소에 Contents: Read and write 권한이 있는 fine-grained PAT)
+# 시크릿이 없으면 빌드만 하고 배포는 건너뛴다. 그때는 `npm run deploy:local` 로 배포.
 on:
   push:
     branches: [main]
@@ -23,7 +24,20 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+      - name: DEPLOY_TOKEN 확인
+        env:
+          TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "HAS_TOKEN=true" >> "$GITHUB_ENV"
+          else
+            echo "HAS_TOKEN=false" >> "$GITHUB_ENV"
+            echo "::notice::DEPLOY_TOKEN 시크릿이 없어 배포를 건너뜁니다. 로컬에서 npm run deploy:local 을 쓰세요."
+          fi
+
       - uses: peaceiris/actions-gh-pages@v4
+        if: env.HAS_TOKEN == 'true'
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: Sub2n/Sub2n.github.io
