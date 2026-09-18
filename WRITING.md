@@ -1,5 +1,37 @@
 # 글쓰기 가이드
 
+## 새 글 올리는 법 (3단계)
+
+**1. 파일 만들기.** 둘 중 하나.
+
+- Claude Code에서: `/til 오늘 배운 거 한 줄` (짧은 글) 또는 `/post 주제` (긴 글). 파일과 frontmatter를 만들어 준다.
+- 직접: `src/content/posts/2026/내-슬러그.md` 를 만들고 아래 frontmatter를 붙여 넣는다.
+
+```yaml
+---
+title: "제목"
+date: 2026-09-20
+tags: ["astro"]
+draft: true
+---
+
+본문
+```
+
+**2. 확인하기.** `npm run dev` 실행 후 http://localhost:4321/posts/2026/내-슬러그/ 열어 본다. `draft: true` 여도 로컬에서는 보인다.
+
+**3. 올리기.** `draft: true` 줄을 지우거나 `false`로 바꾸고 push. 1~2분 뒤 sub2n.github.io에 뜬다.
+
+```sh
+git add -A
+git commit -m "글: 제목"
+git push
+```
+
+Actions가 자동으로 빌드하고 배포한다. 안 되면 `npm run deploy:local`.
+
+---
+
 이 블로그의 글은 **짧게, 사실만, 내 말투로** 쓴다.
 
 ## 글 종류는 두 가지
