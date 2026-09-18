@@ -108,3 +108,6 @@ dist/
 .astro/
 node_modules/
 .DS_Store
+
+# IDE
+.idea/

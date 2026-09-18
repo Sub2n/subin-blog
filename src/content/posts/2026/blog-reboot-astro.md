@@ -3,10 +3,10 @@ title: "블로그 다시 시작"
 date: 2026-09-18
 tags: ["astro", "blog"]
 description: "2019년에 멈춘 Hexo 블로그를 Astro로 다시 만들었다. 옛 글 168개는 주소 그대로 살렸다."
-draft: true
+draft: false
 ---
 
-2019년 8월 17일 TIL이 마지막 글이었다. 7년 만에 블로그를 다시 연다.
+2019년까지 열심히 하던 블로그 취업 후 7년만에 재정비하다.
 
 ## 왜 다시 만들었나
 
@@ -29,4 +29,4 @@ draft: true
 - 글 주소 뒤에 `.md`를 붙이면 마크다운 원문이 나온다. 에이전트가 HTML 파싱 안 해도 되게.
 - `/llms.txt`에 전체 글 목록.
 - 다크 모드, 검색(Pagefind), RSS.
-- Claude Code 스킬 `/til`, `/post`. 터미널에서 오늘 배운 거 말하면 frontmatter까지 채워서 파일을 만들어 준다.
+- Claude Code 스킬 `/til`, `/post`. 터미널에서 오늘 배운 거 말하면 frontmatter까지 채워서 파일을 만들어 주도록 했다.
