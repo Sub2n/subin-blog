@@ -1,0 +1,58 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Comments from '../components/Comments.astro';
+import { getPosts, postPath, postMarkdownPath, tagSlug, formatDate, readingMinutes, excerpt } from '../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: postPath(post).replace(/^\/|\/$/g, '') },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+const description = post.data.description ?? excerpt(post.body, 150);
+---
+<Base
+  title={post.data.title}
+  description={description}
+  type="article"
+  published={post.data.date}
+  updated={post.data.updated}
+  tags={post.data.tags}
+>
+  <article data-pagefind-body>
+    <h1 class="post-title">{post.data.title}</h1>
+    <div class="post-meta">
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+      <span>·</span>
+      <span>{readingMinutes(post.body)}분</span>
+      {post.data.tags.length > 0 && <span>·</span>}
+      {post.data.tags.map((t) => <a href={`/tags/${tagSlug(t)}/`} data-pagefind-filter="tag">{t}</a>)}
+      <span>·</span>
+      <a href={postMarkdownPath(post)} title="마크다운 원문">원문 .md</a>
+    </div>
+    {post.data.legacy && (
+      <p class="legacy-note">2019년에 Hexo 블로그에 쓴 글을 옮겨 왔습니다. 당시 이해를 그대로 두었습니다.</p>
+    )}
+    <div class="prose">
+      <Content />
+    </div>
+    {post.data.tags.length > 0 && (
+      <nav class="post-tags" aria-label="태그">
+        {post.data.tags.map((t) => <a href={`/tags/${tagSlug(t)}/`}>{t}</a>)}
+      </nav>
+    )}
+  </article>
+
+  {(newer || older) && (
+    <nav class="post-nav" aria-label="이전·다음 글">
+      {newer && <div><b>다음</b><a href={postPath(newer)}>{newer.data.title}</a></div>}
+      {older && <div><b>이전</b><a href={postPath(older)}>{older.data.title}</a></div>}
+    </nav>
+  )}
+  <Comments />
+</Base>

@@ -1,0 +1,22 @@
+---
+import { groupByMonth, postPath, tagSlug, formatDate, type Post } from '../lib/posts';
+interface Props { posts: Post[] }
+const { posts } = Astro.props;
+const groups = groupByMonth(posts);
+---
+{groups.map(({ month, posts }) => (
+  <section aria-label={month}>
+    <h2 class="month">{month}</h2>
+    {posts.map((post) => (
+      <article class="row">
+        <time class="d" datetime={post.data.date.toISOString()}>{formatDate(post.data.date, 'short')}</time>
+        <a class="t" href={postPath(post)}>{post.data.title}</a>
+        {post.data.tags.length > 0 && (
+          <span class="tg">
+            {post.data.tags.slice(0, 3).map((t) => <a href={`/tags/${tagSlug(t)}/`}>{t}</a>)}
+          </span>
+        )}
+      </article>
+    ))}
+  </section>
+))}

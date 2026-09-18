@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from 'astro-pagefind/components/Search.astro';
+---
+<Base title="검색" description="글 검색" noindex>
+  <h1 class="page-title">검색</h1>
+  <div class="search-box">
+    <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false, translations: { placeholder: '제목이나 본문으로 찾기', zero_results: '"[SEARCH_TERM]"에 해당하는 글이 없습니다.' } }} />
+  </div>
+</Base>

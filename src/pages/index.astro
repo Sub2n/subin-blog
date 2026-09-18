@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { SITE } from '../config';
+import { getPosts } from '../lib/posts';
+const posts = await getPosts();
+---
+<Base>
+  <p class="intro">{SITE.description} 대부분 그날 막혔던 문제와 해결 과정입니다.</p>
+  <PostList posts={posts} />
+</Base>

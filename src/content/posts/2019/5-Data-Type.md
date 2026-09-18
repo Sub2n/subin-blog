@@ -1,0 +1,382 @@
+---
+title: "5. Data Type"
+date: 2019-04-30
+description: "What is Data Type?Data Type is type of values. All of the data in JavaScript have data type. Allocatation of memory space by Data TypeAll of values…"
+tags: ["Data Type", "자바스크립트"]
+categories: ["JavaScript"]
+path: "2019/04/30/5-Data-Type"
+legacy: true
+thumbnail: "/gallery/thumbnails/javascript.png"
+---
+
+# What is Data Type?
+
+**Data Type is type of values**. All of the data in JavaScript have data type.
+
+## Allocatation of memory space by Data Type
+
+All of values used in programming language can be stored in memory and referenced. To store values in memory, computer need to know the size of memory space it need. Because size of memory depends on data type.
+
+JavaScript uses a double-precision 64-bit floating-point format when creating numeric binary values.
+
+## Access memory by Data Type
+
+When refer to memory space by identifier, computer need to know the size of memory it need to read once. If variable `soup` is Number type, computer should access memory by only 8 byte. Data Type provides that informations to computer and human.
+
+Here’s reasons why Data Type need:
+
+1.  To determine the size of **memory space** that must be free when storing values
+2.  To determine how much **memory space** should be read at once when referring to a value
+3.  To determine **how to interpret the binary** be read from memory. (To Number, String etc.)
+
+# Value
+
+**Value is one of expression that can not be evaluated any more**. The expression is statement that makes value. In other words, expression make value by being evaluated.
+
+```js
+// 1 + 2 is an expression. And this expression evaluated and make a value 3.
+1 + 2
+```
+
+1 + 2 is an expression. It is made up of value 1, 2 and operator +. The expression is evaluated by the JavaScript engine to produce a new value of 3. In other words, expression 1 + 2 is equivalent with value 3. The newly created value of 3 can not be evaluated anymore. When you evaluate 3, it is always 3.
+
+```js
+// The variable is assigned the value 3, which is the evaluated value of expression 1 + 2.
+var sum = 1 + 2;
+```
+
+After the assignment operator =, value must be located. The expression creates value. So the expression can be located after operator =.
+
+Function in JavaScript is an object. And an object is a value. So function also can be evaluated to a value.
+
+# Creation of Value
+
+Value can created by many expressions. **The most basic method** to create value is using **literal notation**. The expression is more comprehensive concept that includes literal notation, identifier expression, etc.
+
+## Literal
+
+**A literal is a fixed value itself created directly in the source code.** More specifically, literal values are evaluated by the JavaScript engine.
+
+**Literal notation creates literal.**
+
+**Literal notation** is method that make literal. The literal notation allows the generation of various types of values (Number, String, Boolean, null, undefined, object, array, function, regular expression, etc.) available in JavaScript. When JavaScript engines meet codes written in literal notation, they interpret the literal at the time the code is executed (runtime) and generate values.
+
+Literal is the most basic method to generates value.
+
+```js
+// Integer literal
+10
+
+// Floating point literal
+10.2
+
+// Binary literal
+0b011010101
+
+// Octal literal
+0o010101
+
+// Hexa literal
+0xd100ff
+
+// String literal
+'Hello'
+"Subin"
+``
+
+// Boolean literal
+true
+false
+
+// null literal
+null
+
+// undefined literal
+undefined
+
+// Object literal
+{ name: 'Park', color: 'yellow' }
+
+// Array literal
+[ 1, 2, 3]
+
+// Function literal
+function(){}
+
+// Regular expression literal
+/ab+c/
+```
+
+Literal notation can be understood as a promise between the JavaScript engine and the developer. The JavaScript engine can interpret literal notation. For example, if you want to generate a numeric value, the developer uses the numeric literal notation to ask the JavaScript engine to generate a numeric value. The JavaScript engine responds to the developer’s request to interpret numeric literals and generate numeric values.
+
+## Relation of Value and Literal
+
+```js
+var soup = 100;
+```
+
+At the right side, 100 is directly created literal by literal notation. This literal is **both literal and value** at the same time because it cannot be evaluated any more and can be assigned to variable.
+
+Another example,
+
+```js
+var soup = 50 + 50;
+```
+
+At the right side, 50 made by literal notation and + operator was used to sum. This expression create a new value 100. As such, statement that generates value in program called **expression**. The right side of this code is expression and generates a new value 100.
+
+So 50 is literal but created value 100 is not a literal, a value.
+
+A literal can be a value in itself, but **not all values are literal**.
+
+## Expressions
+
+A value can be generated by various methods. Various methods are expressions.
+
+The expression refers to **combination of literal, identifier(variable name, function name), operator and function calls**. The expression generate one value as a result of evaluation.
+
+In the other words, **the expression is a statement that can be evaluated to one value.**
+
+Everything that produces a value is an expression.
+
+```js
+// literal notation
+10
+'Hello'
+
+// identifier expression(Assuming that a declaration already exists)
+sum
+person.name
+arr[1]
+
+// operator expression
+10 + 20
+sum = 10	//assignment statement
+sum !== 10
+
+// function/method call expression(Assuming that a declaration already exists)
+square()
+person.getName()
+```
+
+-   The assignment statement is evaluated as a assigned value.
+
+# Classification of Data types
+
+All of the values in JavaScript have a data type. JavaScript provides 7 data types. 7 data types can be classified into primitive types and object(reference) types.
+
+## Primitive type
+
+-   Number type : Number(Integer and Real number)
+-   String type : Strings
+-   Boolean type : logical `true` and `false`
+-   `undefined` type : The implicitly assigned value that declared but not explicitly assigned
+-   `null` type : The value used to indicate intentionally that there is no value.
+-   Symbol type : Seventh type that newly introduced in ES6
+
+## Object /reference type
+
+-   Object, funtcions, array etc.
+
+For example, Number 1 and String ‘1’ are look similar but completely different values. Size of memory space that needs to be occupied is different, binary digits that are stored in memory is different, and method of reading and interpreting is different.
+
+Also the purpose of value is different. Number type values are for arithmetic operation and String type values are for printing out text to screen. As such, developers will create values by distinguishing between types with clear intentions and JavaScript engines will treat values by distinguishing between types.
+
+# Number Type
+
+In C and Java, they distinguish integer and real number so there are various number types like `int`, `long`, `float`, `double`. But JavaScript has only one Number type.
+
+As ECMAScript specification, Number type follows double-precision 64-bit floating-point format(numbers between -(253 -1) ~ 253 -1 ).
+
+JavaScript treats all of the Numbers as real number, has no integer type.
+
+## Special number types
+
+-   Infinity : positive infinity
+-   \-Infinity : negative infinity
+-   NaN : no arithmetic operation(not-a-number)
+
+Infinity is not a mathematical term, but a number that goes beyond what JavaScript can express.
+
+JavaScript is case-sensitive so NaN != nan, NAN, naN, Nan.
+
+# String Type
+
+The String type is used to refer text data. String is a collection of more than 0 16 bit Unicode characters (UTF-16) that can represent most of the world’s characters.
+
+## How to know the size of String?
+
+The purpose of Data Type is to determine the size of **memory space** that must be free when storing values and to determine how much **memory space** should be read at once when referring to a value.
+
+String can be generated by ‘’, “”, \`\`. The most general expression is using ‘’.
+
+```js
+// String Type
+var string;
+string = "문자열"; // double quotes
+string = '문자열'; // single quotes
+string = `문자열`; // backtick
+
+string = "A 'single quote' in a string enclosed in double quotes is recognized as a string.";
+string = 'The "double quotes" in strings enclosed in single quotes are recognized as strings.';
+```
+
+Unlike languages such as C and Java, JavaScript strings are primitive types and are **immutable values**. Immutable means that once a string is generated, it cannot be changed.
+
+## Template literal
+
+ES6 introduced new string expression, called template literal. Template literal seems like general string, it uses backtick (\`).
+
+In a typical string, the line is not allowed and in order to represent a white space, an escape sequence beginning with a backslash () must be used.
+
+Unlike a typical string, ES6 template literal can write strings across multiple lines, and all spaces within the template literal apply as they are.
+
+```js
+const template = `<ul class="nav-items">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>`;
+
+console.log(template);
+```
+
+And Strings can be concatenated using the + string operator. The + operator concatenate operands if at least one of the operand is a String.
+
+```js
+var first = 'Subin';
+var last = 'Park';
+
+// ES5: String Concatenation
+console.log('My name is ' + first + ' ' + last + '.');
+```
+
+Template literal provides String Interpolation to insert new string without using + string operator.
+
+```js
+var first = 'Subin';
+var last = 'Park';
+
+// ES6: String Interpolation
+console.log(`My name is ${first} ${last}.`);
+```
+
+String Interpolation wraps expression with ${ extension}. The evaluation results of the expression are then forced to type into a string.
+
+```js
+console.log(`1 + 1 = ${1 + 1}`);
+```
+
+The sequence is that Number 1 + 1 evaluated to Number 2, and be type casted to String 2.
+
+# Boolean Type
+
+The boolean type values are only `true` and `false`. It is used to condition statement as a flow control.
+
+# undefined Type
+
+The value of undefined type is unique, a `undefined`. The implicitly assigned value that declared but not explicitly assigned.
+
+If the value of variable is `undefined`, it means that the variable only be declared but not be assigned yet.
+
+> ## Declaration and Definition
+> 
+> `undefined` means not defined. The definition refers to clarifying the substance of a variable by assigning a value to the variable.
+> 
+> In C, definition of variable is important because if the variable only declared but not assigned, it can be contain a garbage value. But JavaScript assign `undefined` when at the time a variable is declared. In JavaScript, the boundaries between declarations and definitions are ambiguous and do not distinguish between them.
+
+# null Type
+
+The value of null type is unique, a `null`. JavaScript is case-sensitive so null != Null, NULL.
+
+In programming language, null is used to represent intentional absence. However, assigning `null` to a variable is not used very well.
+
+If the function can not return a valid value, it may explicitly return `null`.
+
+For example, `Document.getElementById(id)` return `null` if given id is not exist in document.
+
+# Object Type
+
+All of the JavaScript data type excepts primitive types are object type.
+
+# Dynamic Typing
+
+## Static type language
+
+Static / Strong type languages ​​such as C or Java must declare a data type in advance. This is called an explicit type declaration. The following is an example of declaring an integer type variable in C.
+
+```c
+// 4 byte integer type
+int num;
+
+// 1 byte integer type
+char c;
+```
+
+Static type language can not change a type of value and only can assign values that match the type declared in the variable. Representative static type languages are C, C++, Java, Kotlin, Go, Hashell, Rust, Scala etc.
+
+## Dynamic type language
+
+JavaScript does not declare the type of variable when declaration. But only use the keywords such as `var`, `let`, `const` to declare a variable. JavaScript can assign any type of values.
+
+```js
+var foo;
+console.log(typeof foo);  // undefined
+
+foo = 3;
+console.log(typeof foo);  // number
+
+foo = 'Hello';
+console.log(typeof foo);  // string
+
+foo = true;
+console.log(typeof foo);  // boolean
+
+foo = null;
+console.log(typeof foo);  // object
+
+foo = Symbol(); // symbol
+console.log(typeof foo);  // symbol
+
+foo = {}; // object
+console.log(typeof foo);  // object
+
+foo = []; // array
+console.log(typeof foo);  // object
+
+foo = function () {}; // 함수
+console.log(typeof foo);  // function
+```
+
+A static type language determines the type of a variable **at the time of variable declaration** and can not change the type of a variable. JavaScript can dynamically determine the type of the variable **at the time of assigning the value** and change the type of the variable at any time.
+
+In other words, JavaScript variables are type-determined by assignments rather than declarations. And the type of variable can be changed by reassignment at any time. This feature is called **Dynamic Typing**, and JavaScript is called a Dynamic / weak type language to distinguish it from Static type languages. Typical dynamic type languages ​​are JavaScript, Python, PHP, Ruby, Lisp, and Perl.
+
+## Parameter and Argument
+
+```js
+// x, y: parameter
+function add(x, y){
+    // type check is needed
+    return x, y;
+}
+
+// 1, 2: argument
+add(1, 2)
+```
+
+A **parameter** is a variable in a method definition. When a method is called, the **arguments** are the data you pass into the method’s **parameters**. **Parameter** is variable in the declaration of function. **Argument** is the actual value of this variable that gets passed to function.
+
+## Things to keep in mind when using variables
+
+-   Actively reduce the use of variables. The greater the number of variables, the higher the probability of error occurrence.
+-   Do not use global variables. Make the life cycle of the variable as short as possible.
+-   Use a constant rather than a variable to suppress the change of value. Use `const` instead `let` if a variable is never reassigned.
+-   The variable name is named so that the reason for the existence of the variable can be grasped.
+
+---
+
+Reference
+
+[Data type & Variable](https://poiemaweb.com/js-data-type-variable)
