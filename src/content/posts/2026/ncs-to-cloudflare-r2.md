@@ -3,7 +3,6 @@ title: "이미지 저장소를 Cloudflare R2로 옮기고 썸네일 프록시를
 date: 2026-09-18
 tags: ["cloudflare", "infra", "backend"]
 description: "네이버 클라우드 스토리지에 있던 이미지 100만 개를 Cloudflare R2로 옮기고, 자체 썸네일 프록시를 Cloudflare 이미지 변환으로 대체한 5일."
-draft: true
 ---
 
 프론트엔드 개발자로 일하면서 저장소랑 CDN, DNS를 직접 만진 건 이번이 처음이다. 9월 14일부터 18일까지 5일 동안 했다.

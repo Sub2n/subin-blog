@@ -3,7 +3,6 @@ title: "GA 대신 볼 수 있는 자체 이벤트 수집기를 만들었다"
 date: 2026-09-18
 tags: ["backend", "infra", "analytics", "rust"]
 description: "앱 50여 개의 이벤트를 GA와 똑같이 자체 수집기에도 쌓기. Rust + Redis Streams + MongoDB로 열흘. Docker가 뭔지도 몰랐던 프론트엔드 개발자의 기록."
-draft: true
 ---
 
 9월 7일에 시작해서 18일에 마무리했다. 시작할 때 나는 API도 서버도 Docker도 모르는 프론트 개발자였다.
